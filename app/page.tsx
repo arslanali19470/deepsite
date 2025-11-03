@@ -2,44 +2,37 @@
 import React from 'react';
 
 const Page = () => {
-  const openHome = () => {
-    const ua = navigator.userAgent || '';
-    const isAndroid = /Android/i.test(ua);
+  const playStore = 'https://play.google.com/store/apps';
 
+  const openHome = () => {
+    const isAndroid = /Android/i.test(navigator.userAgent || '');
     if (isAndroid) {
-      // Open Home via chatbot://open (mapped to Home screen)
       const intentUrl =
-        'intent://open#Intent;scheme=chatbot;package=com.chatbot;S.browser_fallback_url=' +
-        encodeURIComponent('https://play.google.com/store/apps') +
+        'intent://app/open#Intent;scheme=chatbot;package=com.chatbot;S.browser_fallback_url=' +
+        encodeURIComponent(playStore) +
         ';end';
-      window.location.href = intentUrl;
+      window.location.replace(intentUrl);
       return;
     }
-
-    // iOS/other: try scheme, then fallback
-    window.location.href = 'chatbot://open';
+    // iOS/other
+    window.location.href = 'chatbot://app/open';
     setTimeout(() => {
-      // Fallback: keep it simple — maybe your website or App Store page
       window.location.href = 'https://deepsite-fawn.vercel.app/';
     }, 1500);
   };
 
   const openWelcomeWithName = (name = 'Farhan') => {
-    const ua = navigator.userAgent || '';
-    const isAndroid = /Android/i.test(ua);
-
+    const isAndroid = /Android/i.test(navigator.userAgent || '');
     if (isAndroid) {
-      // Open Welcome with a path param
       const intentUrl =
-        `intent://welcome/${encodeURIComponent(name)}#Intent;scheme=chatbot;package=com.chatbot;S.browser_fallback_url=` +
-        encodeURIComponent('https://play.google.com/store/apps') +
+        `intent://app/welcome/${encodeURIComponent(name)}#Intent;scheme=chatbot;package=com.chatbot;S.browser_fallback_url=` +
+        encodeURIComponent(playStore) +
         ';end';
-      window.location.href = intentUrl;
+      window.location.replace(intentUrl);
       return;
     }
-
     // iOS/other
-    window.location.href = `chatbot://welcome/${encodeURIComponent(name)}`;
+    window.location.href = `chatbot://app/welcome/${encodeURIComponent(name)}`;
     setTimeout(() => {
       window.location.href = `https://deepsite-fawn.vercel.app/welcome/${encodeURIComponent(name)}`;
     }, 1500);
@@ -48,33 +41,10 @@ const Page = () => {
   return (
     <div style={{ textAlign: 'center', marginTop: 50 }}>
       <h1>Deep Linking Test</h1>
-
-      <button
-        onClick={openHome}
-        style={{
-          backgroundColor: '#007bff',
-          color: 'white',
-          padding: '10px 20px',
-          border: 'none',
-          borderRadius: 6,
-          cursor: 'pointer',
-          marginRight: 10,
-        }}
-      >
-        Open Home (chatbot://open)
+      <button onClick={openHome} style={{ backgroundColor: '#007bff', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: 6, cursor: 'pointer', marginRight: 10 }}>
+        Open Home (chatbot://app/open)
       </button>
-
-      <button
-        onClick={() => openWelcomeWithName('Farhan')}
-        style={{
-          backgroundColor: '#28a745',
-          color: 'white',
-          padding: '10px 20px',
-          border: 'none',
-          borderRadius: 6,
-          cursor: 'pointer',
-        }}
-      >
+      <button onClick={() => openWelcomeWithName('Farhan')} style={{ backgroundColor: '#28a745', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: 6, cursor: 'pointer' }}>
         Open Welcome (name=Farhan)
       </button>
     </div>
