@@ -39,14 +39,52 @@ const Page = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: 50 }}>
-      <h1>Deep Linking Test</h1>
-      <button onClick={openHome} style={{ backgroundColor: '#007bff', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: 6, cursor: 'pointer', marginRight: 10 }}>
-        Open Home (chatbot://app/open)
-      </button>
-      <button onClick={() => openWelcomeWithName('Arslan')} style={{ backgroundColor: '#28a745', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: 6, cursor: 'pointer' }}>
-        Open Welcome (name=Arslan)
-      </button>
+    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', background: "white", }}>
+      <h1 style={{ fontSize: '2rem', color: '#333', marginBottom: '30px' }}>Deep Linking Test</h1>
+
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '40px' }}>
+        <button
+          onClick={openHome}
+          style={{
+            backgroundColor: '#007bff',
+            color: '#fff',
+            padding: '15px 30px',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontSize: '1rem',
+            transition: 'background-color 0.3s ease',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#0056b3')}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#007bff')}
+        >
+          Open Home (chatbot://app/open)
+        </button>
+
+        <button
+          onClick={() => openWelcomeWithName('Arslan')}
+          style={{
+            backgroundColor: '#28a745',
+            color: '#fff',
+            padding: '15px 30px',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontSize: '1rem',
+            transition: 'background-color 0.3s ease',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#218838')}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#28a745')}
+        >
+          Open Welcome (name=Arslan)
+        </button>
+      </div>
+
+      <p style={{ color: '#777', fontSize: '1rem' }}>
+        Click the buttons above to test the deep linking functionality.
+      </p>
     </div>
   );
 };
