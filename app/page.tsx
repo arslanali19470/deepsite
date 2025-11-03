@@ -10,7 +10,7 @@ const Page = () => {
       // Open Home via chatbot://open (mapped to Home screen)
       const intentUrl =
         'intent://open#Intent;scheme=chatbot;package=com.chatbot;S.browser_fallback_url=' +
-        encodeURIComponent('https://play.google.com/store/apps/details?id=com.chatbot') +
+        encodeURIComponent('https://play.google.com/store/apps') +
         ';end';
       window.location.href = intentUrl;
       return;
@@ -32,7 +32,7 @@ const Page = () => {
       // Open Welcome with a path param
       const intentUrl =
         `intent://welcome/${encodeURIComponent(name)}#Intent;scheme=chatbot;package=com.chatbot;S.browser_fallback_url=` +
-        encodeURIComponent('https://play.google.com/store/apps/details?id=com.chatbot') +
+        encodeURIComponent('https://play.google.com/store/apps') +
         ';end';
       window.location.href = intentUrl;
       return;
