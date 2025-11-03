@@ -44,8 +44,8 @@ const Page = () => {
       <button onClick={openHome} style={{ backgroundColor: '#007bff', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: 6, cursor: 'pointer', marginRight: 10 }}>
         Open Home (chatbot://app/open)
       </button>
-      <button onClick={() => openWelcomeWithName('Farhan')} style={{ backgroundColor: '#28a745', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: 6, cursor: 'pointer' }}>
-        Open Welcome (name=Farhan)
+      <button onClick={() => openWelcomeWithName('Arslan')} style={{ backgroundColor: '#28a745', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: 6, cursor: 'pointer' }}>
+        Open Welcome (name=Arslan)
       </button>
     </div>
   );
