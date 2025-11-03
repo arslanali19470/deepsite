@@ -47,8 +47,7 @@ const Page = () => {
 
   return (
     <div style={{ textAlign: 'center', marginTop: 50 }}>
-      <h1>Hello!</h1>
-      <p>Tap a button on your phone to open the native app.</p>
+      <h1>Deep Linking Test</h1>
 
       <button
         onClick={openHome}
